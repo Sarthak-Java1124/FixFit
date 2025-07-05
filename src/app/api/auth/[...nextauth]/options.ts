@@ -15,9 +15,12 @@ export const authOptions : NextAuthOptions = {
         email: { label: "Email", type: "email", placeholder: "Enter your email" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials : any) : Promise<any> {
+      async authorize(credentials : Record<"email" | "password", string> | undefined) : Promise<any> {
           await dbConnect();
         try {
+          if (!credentials) {
+            throw new Error("Credentials are required");
+          }
           const isUserPresent = await User.findOne({
               email : credentials.email
           });

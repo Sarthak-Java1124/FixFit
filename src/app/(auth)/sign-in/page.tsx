@@ -63,7 +63,7 @@ export default function SignIn() {
       if (result?.url) {
         router.replace("/dashboard");
       }
-    } catch (error) {
+    } catch {
       toast("Sign in failed");
     }
   };

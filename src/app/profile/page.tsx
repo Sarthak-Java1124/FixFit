@@ -1,16 +1,13 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/options";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 1.1 } },
 };
 
-export default async function ProfilePage() {
-  await getServerSession(authOptions);
+export default function ProfilePage() {
 
   
   return (
