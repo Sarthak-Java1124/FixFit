@@ -79,7 +79,7 @@ export default function SignIn() {
           initial="initial"
           animate="animate"
           whileHover="hover"
-          className="relative flex w-full max-w-[750px] h-[500px] rounded-2xl shadow-2xl bg-[rgba(20,20,30,0.85)] backdrop-blur-xl overflow-hidden border border-[#ff9900]/30"
+          className="relative flex flex-col md:flex-row w-full max-w-[750px] min-h-[500px] md:h-[500px] rounded-2xl shadow-2xl bg-[rgba(20,20,30,0.85)] backdrop-blur-xl overflow-hidden border border-[#ff9900]/30"
         >
           {/* Close Button */}
           <button className="absolute top-4 right-4 z-10 bg-[rgba(255,153,0,0.2)] hover:bg-[rgba(255,153,0,0.3)] rounded-full p-2 transition shadow-lg border border-[#ff9900]/30">
@@ -88,8 +88,8 @@ export default function SignIn() {
             </svg>
           </button>
           {/* Left: Image & Text */}
-          <div className="w-1/2 h-full relative flex flex-col justify-end bg-gradient-to-t from-[#ff9900]/20 to-[#ff6600]/10 p-4">
-            <div className="absolute inset-0 rounded-l-2xl overflow-hidden">
+          <div className="w-full md:w-1/2 h-64 md:h-full relative flex flex-col justify-end bg-gradient-to-t from-[#ff9900]/20 to-[#ff6600]/10 p-4">
+            <div className="absolute inset-0 rounded-t-2xl md:rounded-l-2xl md:rounded-t-none overflow-hidden">
               <Image
                 src="/tailorMade.png"
                 alt="Sign In Tailor"
@@ -105,7 +105,7 @@ export default function SignIn() {
               animate={["animate", "float"]}
               className="relative z-10"
             >
-              <h2 className="text-[#fffbe7] text-xl font-extrabold mb-2 font-[chakra] tracking-normal">Welcome Back!</h2>
+              <h2 className="text-[#fffbe7] text-lg md:text-xl font-extrabold mb-2 font-[chakra] tracking-normal">Welcome Back!</h2>
               <p className="text-[#bfae8e] text-xs font-bold font-[chakra]">Sign in to manage your tailoring experience.</p>
             </motion.div>
           </div>
@@ -114,7 +114,7 @@ export default function SignIn() {
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="w-1/2 h-full bg-[rgba(20,20,30,0.95)] backdrop-blur-lg flex flex-col justify-center px-6 py-4 relative z-10"
+            className="w-full md:w-1/2 h-full bg-[rgba(20,20,30,0.95)] backdrop-blur-lg flex flex-col justify-center px-4 md:px-6 py-4 relative z-10"
           >
             <AnimatePresence mode="wait">
               <motion.h3
