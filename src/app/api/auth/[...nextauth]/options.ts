@@ -15,6 +15,7 @@ export const authOptions : NextAuthOptions = {
         email: { label: "Email", type: "email", placeholder: "Enter your email" },
         password: { label: "Password", type: "password" }
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       async authorize(credentials : Record<"email" | "password", string> | undefined) : Promise<any> {
           await dbConnect();
         try {
@@ -33,7 +34,12 @@ export const authOptions : NextAuthOptions = {
           if(!isPasswordCorrect){
             throw new Error("The Password is Incorrect");
           }
-          return isUserPresent;
+          return {
+            id: isUserPresent._id?.toString() || "",
+            email: isUserPresent.email,
+            name: `${isUserPresent.firstname} ${isUserPresent.lastname}`,
+            _id: isUserPresent._id?.toString() || ""
+          };
           
         }catch{
           throw new Error("An error occured while sigining you in");
