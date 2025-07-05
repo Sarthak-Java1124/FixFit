@@ -1,7 +1,4 @@
 import { z } from "zod";
-import { email } from "zod/v4";
-
-
 
 export const signUpSchema = z.object({
  

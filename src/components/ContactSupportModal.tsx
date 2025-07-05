@@ -89,7 +89,7 @@ export default function ContactSupportModal({ isOpen, onClose }: ContactSupportM
                   className="text-[#bfae8e] font-sans font-[var(--font-sora)]"
                   style={{ fontFamily: "var(--font-sora), sans-serif" }}
                 >
-                  We're here to help! Send us your query.
+                  We&apos;re here to help! Send us your query.
                 </motion.p>
               </motion.div>
 

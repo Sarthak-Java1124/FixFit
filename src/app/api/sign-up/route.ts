@@ -1,9 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
-import { NextApiResponse } from "next";
-import { buildCustomRoute } from "next/dist/server/lib/router-utils/filesystem";
-import { success } from "zod/v4";
 
   export async function POST(req : Request){
     await dbConnect();

@@ -10,7 +10,7 @@ const fadeUp = {
 };
 
 export default async function ProfilePage() {
-  const session = await getServerSession(authOptions);
+  await getServerSession(authOptions);
 
   
   return (

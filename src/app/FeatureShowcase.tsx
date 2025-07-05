@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaUserEdit, FaSocks, FaFemale, FaRegDotCircle, FaTruck, FaClock, FaCheckCircle, FaMoneyCheckAlt, FaShieldAlt } from "react-icons/fa";
+import { FaUserEdit, FaSocks, FaFemale, FaRegDotCircle, FaTruck, FaClock, FaCheckCircle } from "react-icons/fa";
 import { GiZipper } from "react-icons/gi";
 
 const containerVariants = {

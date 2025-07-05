@@ -4,7 +4,6 @@ import { motion, easeOut, easeInOut } from "framer-motion";
 import Image from "next/image";
 import StarBackground from "../../StarBackground";
 import { signOut, useSession } from "next-auth/react";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import { useRouter } from "next/navigation";
 
 

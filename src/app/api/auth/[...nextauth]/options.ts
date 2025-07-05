@@ -3,9 +3,6 @@ import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { redirect } from "next/dist/server/api-utils";
-import { success } from "zod/v4";
-
 
 export const authOptions : NextAuthOptions = {
   providers: [
@@ -35,7 +32,7 @@ export const authOptions : NextAuthOptions = {
           }
           return isUserPresent;
           
-        }catch(error){
+        }catch{
           throw new Error("An error occured while sigining you in");
         }
       

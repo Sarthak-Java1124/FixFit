@@ -1,19 +1,17 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import StarBackground from "../../StarBackground";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { signUpSchema } from "@/Schemas/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { register } from "module";
 import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import {signIn, useSession} from "next-auth/react"
+import { useSession } from "next-auth/react"
 
 // Animation variants
 const cardVariants = {
@@ -46,20 +44,17 @@ export default function Signup() {
       password : ""
     }
   })
- 
 
-  const {register}   = form;
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   useEffect(() => {
     if (status === "authenticated") {
       router.replace("/dashboard");
     }
   }, [status, router]);
 
-
   const onSubmit = async(data : z.infer<typeof signUpSchema>)=>{
         try {
-          const response = await axios.post<ApiResponse>("api/sign-up" , data);
+          await axios.post<ApiResponse>("api/sign-up" , data);
            toast("The form submitted succesfully");
 
            router.push("/sign-in");
@@ -68,7 +63,6 @@ export default function Signup() {
         }catch(error){
 const axiosError = error as AxiosError<ApiResponse>;
 ;
-
 
 toast(`${axiosError.response?.data.message}`);
 
@@ -160,7 +154,7 @@ toast(`${axiosError.response?.data.message}`);
                     key="firstname"
                     type="text"
                     placeholder="First name"
-                    {...register("firstname")}
+                    {...form.register("firstname")}
                     onChange={(e) => form.setValue("firstname" , e.target.value) }
                     className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                     variants={formItem}
@@ -170,7 +164,7 @@ toast(`${axiosError.response?.data.message}`);
                     key="lastname"
                     type="text"
                     placeholder="Last name"
-                 {...register("lastname")}
+                 {...form.register("lastname")}
                     onChange={(e) => form.setValue("lastname" , e.target.value)}
                     className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                     variants={formItem}
@@ -181,7 +175,7 @@ toast(`${axiosError.response?.data.message}`);
                   key="email"
                   type="email"
                   placeholder="Email address"
-                {...register("email")}
+                {...form.register("email")}
                   onChange={(e) =>form.setValue("email" , e.target.value)}
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}
@@ -191,7 +185,7 @@ toast(`${axiosError.response?.data.message}`);
                   key="password"
                   type="password"
                   placeholder="Password"
-                 {...register("password")}
+                 {...form.register("password")}
                   onChange={(e) => form.setValue("password" , e.target.value)}
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}

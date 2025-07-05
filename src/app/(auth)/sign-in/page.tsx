@@ -2,8 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import StarBackground from "../../StarBackground";
-import { motion, AnimatePresence, easeOut, easeInOut , Variants } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence, easeOut, easeInOut } from "framer-motion";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,8 +11,6 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { signInSchema } from "@/Schemas/signInSchema";
-
-
 
 const cardVariants = {
   initial: { opacity: 0, scale: 0.95 },
@@ -39,9 +37,7 @@ export default function SignIn() {
     defaultValues: { email: "", password: "" },
   });
 
-  
-
-  const {data : session , status} = useSession();
+  const { status } = useSession();
   useEffect(() => {
     if(status==="authenticated"){
       router.replace("/dashboard");
@@ -149,7 +145,6 @@ export default function SignIn() {
                 animate="animate"
                 exit="initial"
                 onSubmit={form.handleSubmit(onSubmit)}
-              
               >
                 <motion.input
                   key="email"

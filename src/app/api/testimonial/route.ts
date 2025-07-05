@@ -1,8 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import TestimonialUser from "@/models/Testimonial";
 import { NextRequest, NextResponse } from "next/server";
-import { success } from "zod/v4";
-
 
 export  async function POST(request: NextRequest){
 
@@ -25,7 +23,7 @@ export  async function POST(request: NextRequest){
             message : "The form submitted sucessfully"
          })
 
-    }catch(error){
+    }catch{
           return Response.json({
             success : false,
             message: "There was an error submitting the form "
@@ -41,7 +39,7 @@ export async function GET(){
     try {
         const testimonial = await TestimonialUser.find({});
         return NextResponse.json(testimonial);
-    } catch (error) {
+    } catch {
         return Response.json({
             success : false,
             message  : "Unable to fetch testimonials"

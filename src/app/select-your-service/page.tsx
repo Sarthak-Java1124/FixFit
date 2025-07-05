@@ -1,14 +1,11 @@
 "use client";
-import { useState } from "react";
-import { motion, useForceUpdate } from "framer-motion";
+import { motion } from "framer-motion";
 import StarBackground from "../StarBackground";
 import { useForm } from "react-hook-form";
 import {z} from "zod"
 import { serviceSchema } from "@/Schemas/serviceSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { register } from "module";
 import axios from "axios";
-import { success } from "zod/v4";
 import { useRouter } from "next/navigation";
 
 const fadeUp = {
@@ -44,7 +41,7 @@ export default function SelectYourServicePage() {
   const {register  , reset} = form;
   const onSubmit = async (data : z.infer<typeof serviceSchema>)=>{
      try{
-      const response = await axios.post("api/select-your-service" , data);
+      await axios.post("api/select-your-service" , data);
       router.push("/dashboard");
       reset();
        
@@ -55,7 +52,7 @@ export default function SelectYourServicePage() {
             
 
 
-     }catch(error){
+     }catch{
            return Response.json({
             success : true,
             message : "There was a problem in submitting your response"
@@ -90,7 +87,7 @@ export default function SelectYourServicePage() {
               className="block text-[#ffd700] font-semibold mb-2 font-[chakra]"
               style={{ fontFamily: "chakra, sans-serif" }}
             >
-              What's your gender?
+              What&apos;s your gender?
             </label>
             <select
               className="w-full px-4 py-2 rounded-lg bg-black/60 text-[#fffbe7] border border-[#ffd70033] focus:outline-none focus:ring-2 focus:ring-[#ffd700] transition font-[chakra]"
@@ -108,7 +105,7 @@ export default function SelectYourServicePage() {
               className="block text-[#ffd700] font-semibold mb-2 font-[chakra]"
               style={{ fontFamily: "chakra, sans-serif" }}
             >
-              What's your location?
+              What&apos;s your location?
             </label>
             <select
               className="w-full px-4 py-2 rounded-lg bg-black/60 text-[#fffbe7] border border-[#ffd70033] focus:outline-none focus:ring-2 focus:ring-[#ffd700] transition font-[chakra]"

@@ -18,32 +18,6 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 1.4 } },
 };
 
-const floatAnimation = {
-  animate: {
-    y: [0, -10, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  }
-};
-
-const glowAnimation = {
-  animate: {
-    boxShadow: [
-      "0 0 20px rgba(255, 153, 0, 0.3)",
-      "0 0 40px rgba(255, 153, 0, 0.6)",
-      "0 0 20px rgba(255, 153, 0, 0.3)"
-    ],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  }
-};
-
 export default function AboutUs() {
   return (
     <motion.div
@@ -109,7 +83,7 @@ export default function AboutUs() {
           style={{fontFamily: 'var(--font-sora), sans-serif'}}
           whileHover={{ color: "#fffbe7" }}
         >
-          We're on a mission to bring the art of professional tailoring into the digital age, 
+          We&apos;re on a mission to bring the art of professional tailoring into the digital age, 
           making expert craftsmanship accessible to everyone, everywhere.
         </motion.p>
       </motion.section>
@@ -216,14 +190,14 @@ export default function AboutUs() {
             >
               What started as a small team of fashion enthusiasts and tech innovators has 
               grown into a comprehensive platform that connects thousands of skilled tailors 
-              with customers worldwide. We've built our reputation on three core principles: 
+              with customers worldwide. We&apos;ve built our reputation on three core principles: 
               quality craftsmanship, technological innovation, and exceptional customer service.
             </motion.p>
             <motion.p
               whileHover={{ color: "#fffbe7" }}
               transition={{ duration: 0.3 }}
             >
-              Today, we're proud to serve customers across multiple countries, working with 
+              Today, we&apos;re proud to serve customers across multiple countries, working with 
               over 500 verified tailors and handling thousands of alterations, custom fittings, 
               and bespoke creations every month. Our platform continues to evolve, incorporating 
               AI-powered fitting algorithms, virtual try-on technology, and seamless payment systems.

@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -30,7 +29,7 @@ const fadeUp = {
 
 
 function LandingPage1() {
-  const {data : session , status} = useSession();
+  const { status } = useSession();
   
   const router = useRouter();
   function routeIt() {

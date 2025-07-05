@@ -1,7 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import Service from "@/models/SelectService";
 import { NextRequest } from "next/server";
-import { success } from "zod/v4";
 
 export async function POST(request : NextRequest){
          await dbConnect();
@@ -21,7 +20,7 @@ export async function POST(request : NextRequest){
              success : true,
              message : "Services created successfully"
     });
-}catch(error){
+}catch{
     
     return Response.json({
       success: false,

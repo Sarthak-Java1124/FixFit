@@ -1,4 +1,3 @@
-import { number } from "framer-motion"
 import mongoose , {Schema , Document} from "mongoose"
 
  export interface SignUp extends Document {

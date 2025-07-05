@@ -3,14 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { register } from "module";
-import { text } from "stream/consumers";
-import { title } from "process";
 import axios from "axios";
-import { success } from "zod/v4";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-
 
 const containerVariants = {
   hidden: {},
@@ -60,7 +54,7 @@ export default function TestimonialSection() {
         const {register , handleSubmit  , reset} = form;
     const onSubmit = async (data : TestimonialForm)=>{
        try {
-        const postResponse = await axios.post("/api/testimonial" , data);
+        await axios.post("/api/testimonial" , data);
        
         
         reset();
@@ -99,7 +93,7 @@ export default function TestimonialSection() {
               </div>
             </div>
             <div className="text-white text-sm mb-2 font-sans font-[var(--font-sora)]" style={{fontFamily: 'var(--font-sora), sans-serif'}}>
-              "{testimonials[current].experience}"
+              &ldquo;{testimonials[current].experience}&rdquo;
             </div>
             <div className="absolute left-0 bottom-0 w-full h-2 bg-gradient-to-r from-transparent via-[#ff9900]/40 to-transparent blur-md opacity-80 rounded-b-xl" />
           </motion.div>
