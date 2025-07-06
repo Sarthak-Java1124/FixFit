@@ -87,7 +87,6 @@ export default function SignIn() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          {/* Left: Image & Text */}
           <div className="w-full md:w-1/2 h-64 md:h-full relative flex flex-col justify-end bg-gradient-to-t from-[#ff9900]/20 to-[#ff6600]/10 p-4">
             <div className="absolute inset-0 rounded-t-2xl md:rounded-l-2xl md:rounded-t-none overflow-hidden">
               <Image
@@ -109,7 +108,6 @@ export default function SignIn() {
               <p className="text-[#bfae8e] text-xs font-bold font-[chakra]">Sign in to manage your tailoring experience.</p>
             </motion.div>
           </div>
-          {/* Right: Sign-in Form */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
@@ -155,6 +153,7 @@ export default function SignIn() {
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}
                   required
+                  suppressHydrationWarning
                 />
                 <motion.input
                   key="password"
@@ -165,6 +164,7 @@ export default function SignIn() {
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}
                   required
+                  suppressHydrationWarning
                 />
                 <motion.a
                   key="forgot-link"
@@ -182,6 +182,7 @@ export default function SignIn() {
                   type="submit"
                   className="w-full py-2 rounded-lg bg-gradient-to-r from-[#ff9900] to-[#ff6600] text-white font-bold font-[chakra] shadow-lg hover:from-[#ff6600] hover:to-[#ff9900] transition text-sm"
                   variants={formItem}
+                  suppressHydrationWarning
                 >
                   Sign in
                 </motion.button>

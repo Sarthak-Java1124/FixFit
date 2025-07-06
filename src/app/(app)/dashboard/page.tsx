@@ -5,6 +5,7 @@ import Image from "next/image";
 import StarBackground from "../../StarBackground";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 
 const containerVariants = {
@@ -35,6 +36,31 @@ const headingVariants = {
 
 export default function DashboardPage() {
   const router = useRouter();
+  
+  const handleLogout = async () => {
+    try {
+      console.log("Starting logout process...");
+      
+      await signOut({ 
+        redirect: false
+      });
+      
+      console.log("Sign out successful, redirecting...");
+      
+      router.push("/sign-in");
+      
+    } catch (error) {
+      console.error("Logout error:", error);
+      
+      try {
+        await signOut({ redirect: false });
+      } catch (secondError) {
+        console.error("Second logout attempt failed:", secondError);
+      }
+      
+      window.location.href = "/sign-in";
+    }
+  };
   const dashboardFeatures = [
     {
       title: "Select Your Service",
@@ -71,9 +97,24 @@ export default function DashboardPage() {
     },
   ];
   
-  const {status} = useSession();
-  if (status =="unauthenticated") {
-    router.replace("/sign-in");
+  const {status, data: session} = useSession();
+  
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.replace("/sign-in");
+    }
+  }, [status, router]);
+  
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen bg-black/90 flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+  
+  if (status === "unauthenticated") {
+    return null;
   }
   return (
     <div className="min-h-screen bg-black/90 font-[chakra] relative overflow-hidden">
@@ -85,7 +126,6 @@ export default function DashboardPage() {
       >
         <div className="w-full h-full rounded-full bg-gradient-to-b from-[#ff9900]/60 to-transparent" />
       </div>
-      {/* Glassy Navbar */}
       <nav
         className="flex items-center justify-between max-w-3xl mx-auto mt-8 px-8 py-3 rounded-md bg-[rgba(20,20,30,0.7)] shadow-xl backdrop-blur-lg border border-[#ffd70033] relative z-30"
         style={{ boxShadow: "0 4px 32px #0008, 0 0 32px #ffd70022" }}
@@ -104,10 +144,9 @@ export default function DashboardPage() {
         <div className="flex gap-6 items-center text-[#fffbe7] text-base font-medium z-10">
           <a href="/home" className="hover:text-[#ffd700] transition">Home</a>
           <a href="/profile" className="hover:text-[#ffd700] transition">Profile</a>
-          <button onClick={() => { signOut({callbackUrl:"/sign-in"})}} className="hover:text-[#ffd700] transition">Logout</button>
+          <button onClick={handleLogout} className="hover:text-[#ffd700] transition">Logout</button>
         </div>
       </nav>
-      {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-[40vh] pt-8">
         <motion.div
           variants={containerVariants}
@@ -133,7 +172,6 @@ export default function DashboardPage() {
           </motion.p>
         </motion.div>
       </section>
-      {/* Dashboard Features */}
       <motion.div
         variants={containerVariants}
         initial="hidden"

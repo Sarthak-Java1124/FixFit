@@ -26,7 +26,6 @@ export default function TestimonialSection() {
     name : string,
     position : string,
     experience : string,
-
    }
    const [testimonials , setTestimonials] = useState<TestimonialForm[]>([]);
    const [current, setCurrent] = useState(0);
@@ -55,7 +54,9 @@ export default function TestimonialSection() {
     const onSubmit = async (data : TestimonialForm)=>{
        try {
         await axios.post("/api/testimonial" , data);
-       
+        
+        const response = await axios.get("/api/testimonial");
+        setTestimonials(response.data);
         
         reset();
        }catch(error){
@@ -132,6 +133,7 @@ export default function TestimonialSection() {
                   className="w-full px-4 py-3 bg-[rgba(255,255,255,0.1)] border border-[#ff9900]/30 rounded-lg text-white placeholder-[#bfae8e] focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition"
                   placeholder="Your name"
                   required
+                  suppressHydrationWarning
                 />
               </div>
               <div>
@@ -145,6 +147,7 @@ export default function TestimonialSection() {
                   className="w-full px-4 py-3 bg-[rgba(255,255,255,0.1)] border border-[#ff9900]/30 rounded-lg text-white placeholder-[#bfae8e] focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition"
                   placeholder="e.g., Fashion Designer"
                   required
+                  suppressHydrationWarning
                 />
               </div>
             </div>
@@ -159,6 +162,7 @@ export default function TestimonialSection() {
                 className="w-full px-4 py-3 bg-[rgba(255,255,255,0.1)] border border-[#ff9900]/30 rounded-lg text-white placeholder-[#bfae8e] focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition resize-none"
                 placeholder="Share your experience with our tailoring services..."
                 required
+                suppressHydrationWarning
               />
             </div>
             <motion.button
@@ -166,6 +170,7 @@ export default function TestimonialSection() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full py-3 px-6 bg-gradient-to-r from-[#ff9900] to-[#ff6600] text-white font-bold rounded-lg hover:from-[#ff6600] hover:to-[#ff9900] transition shadow-lg"
+              suppressHydrationWarning
             >
               Submit Testimonial
             </motion.button>

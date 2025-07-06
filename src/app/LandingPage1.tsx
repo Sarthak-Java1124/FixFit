@@ -46,9 +46,8 @@ function LandingPage1() {
     setIsMenuOpen(false);
   };
   return (
-    <div className="min-h-screen bg-black/80 font-[chakra] relative overflow-hidden">
-      {/* Desktop Navbar - Hidden on mobile */}
-      <div className="hidden md:block">
+          <div className="min-h-screen bg-black/80 font-[chakra] relative overflow-hidden">
+        <div className="hidden md:block">
         <div
           className="absolute left-1/2 -translate-x-1/2 top-4 w-[600px] h-[120px] z-0 pointer-events-none"
           style={{ filter: "blur(32px)" }}
@@ -98,7 +97,6 @@ function LandingPage1() {
         </nav>
       </div>
 
-      {/* Mobile Floating Menu Button */}
       <div className="md:hidden fixed top-6 right-6 z-50">
         <button
           onClick={toggleMenu}
@@ -113,15 +111,12 @@ function LandingPage1() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onClick={closeMenu}></div>
       )}
 
-      {/* Mobile Menu */}
       <div className={`fixed top-0 right-0 h-full w-80 bg-[rgba(20,20,30,0.95)] backdrop-blur-lg border-l border-[#ffd70033] shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col h-full">
-          {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-6 border-b border-[#ffd70033]">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#ffd700] to-[#fffbe7] flex items-center justify-center shadow-lg">
@@ -143,7 +138,6 @@ function LandingPage1() {
             </button>
           </div>
 
-          {/* Mobile Navigation Links */}
           <div className="flex-1 flex flex-col p-6 space-y-6">
             <a 
               href="#feature-showcase" 

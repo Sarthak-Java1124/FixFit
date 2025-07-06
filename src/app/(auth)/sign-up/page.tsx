@@ -89,7 +89,6 @@ toast(`${axiosError.response?.data.message}`);
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          {/* Left: Image & Text */}
           <div className="w-full md:w-1/2 h-64 md:h-full relative flex flex-col justify-end bg-gradient-to-t from-[#ff9900]/20 to-[#ff6600]/10 p-4">
             <div className="absolute inset-0 rounded-t-2xl md:rounded-l-2xl md:rounded-t-none overflow-hidden">
               <Image
@@ -111,7 +110,6 @@ toast(`${axiosError.response?.data.message}`);
               <p className="text-[#bfae8e] text-xs font-bold font-[chakra]">Discover, shop, and connect with the best tailors near you.</p>
             </motion.div>
           </div>
-          {/* Right: E-commerce Form */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
@@ -159,6 +157,7 @@ toast(`${axiosError.response?.data.message}`);
                     className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                     variants={formItem}
                     required
+                    suppressHydrationWarning
                   />
                   <motion.input
                     key="lastname"
@@ -169,6 +168,7 @@ toast(`${axiosError.response?.data.message}`);
                     className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                     variants={formItem}
                     required
+                    suppressHydrationWarning
                   />
                 </div>
                 <motion.input
@@ -180,6 +180,7 @@ toast(`${axiosError.response?.data.message}`);
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}
                   required
+                  suppressHydrationWarning
                 />
                 <motion.input
                   key="password"
@@ -190,6 +191,7 @@ toast(`${axiosError.response?.data.message}`);
                   className="px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.1)] text-[#fffbe7] placeholder-[#bfae8e] font-[chakra] border border-[#ff9900]/30 focus:border-[#ff9900] focus:ring-2 focus:ring-[#ff9900]/20 transition shadow-sm backdrop-blur-sm text-sm"
                   variants={formItem}
                   required
+                  suppressHydrationWarning
                 />
                 <motion.a
                   key="forgot-link"
@@ -207,7 +209,7 @@ toast(`${axiosError.response?.data.message}`);
                   type="submit"
                   className="w-full py-2 rounded-lg bg-gradient-to-r from-[#ff9900] to-[#ff6600] text-white font-bold font-[chakra] shadow-lg hover:from-[#ff6600] hover:to-[#ff9900] transition text-sm"
                   variants={formItem}
-                  
+                  suppressHydrationWarning
                  
                 >
                   Sign up

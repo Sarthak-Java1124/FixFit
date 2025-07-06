@@ -41,8 +41,4 @@ import bcrypt from "bcryptjs";
                 message : "There is an error while parsing the user"
                })
           }
-       
-
-
-
   }

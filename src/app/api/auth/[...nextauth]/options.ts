@@ -15,7 +15,6 @@ export const authOptions : NextAuthOptions = {
         email: { label: "Email", type: "email", placeholder: "Enter your email" },
         password: { label: "Password", type: "password" }
       },
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       async authorize(credentials : Record<"email" | "password", string> | undefined) : Promise<any> {
           await dbConnect();
         try {
