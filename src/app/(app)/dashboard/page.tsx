@@ -97,7 +97,7 @@ export default function DashboardPage() {
     },
   ];
   
-  const {status, data: session} = useSession();
+  const {status} = useSession();
   
   useEffect(() => {
     if (status === "unauthenticated") {
