@@ -13,12 +13,22 @@ async function dbConnect() {
   }
 
   try {
-    const db = await mongoose.connect(process.env.MONGODB_URI || "" , {});
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      throw new Error("MONGODB_URI environment variable is not set");
+    }
+
+    const db = await mongoose.connect(mongoUri, {
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    });
+    
     console.log("The Database is Connected");
     connection.isConnected = db.connections[0].readyState;
   } catch (error) {
-    console.log("The databse connectiion failed", error);
-    process.exit(1);
+    console.error("Database connection failed:", error);
+    throw error;
   }
 }
 export default dbConnect;
